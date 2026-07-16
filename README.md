@@ -1,61 +1,46 @@
 # Echo Platform OS
 
-Echo Platform OS is the operations layer for Echo Motorworks. It unifies catalog health, suppliers, sync previews, image intelligence, fitment, garage, reviews, automation, notifications, and Mission Control inside WordPress/WooCommerce.
+Echo Platform OS is the operations system behind Echo Motorworks. It brings catalog health, supplier connections, sync previews, image intelligence, reviews, automation, fitment, garage, reports, and Mission Control into one WordPress/WooCommerce platform.
 
-## Current baseline
+## Source of truth
 
-This repository begins from the last confirmed working release:
+This GitHub repository is the master copy. The installable WordPress plugin lives in `echo-platform/`. Release ZIPs are generated from that folder.
 
-- Echo Platform OS 1.2.0
-- Supplier Sync Engine
-- WordPress plugin folder: `echo-platform/`
+## Repository map
 
-## Repository layout
+- `echo-platform/` — WordPress plugin source
+- `docs/` — architecture, roadmap, APIs, connectors, modules, database, and operating procedures
+- `tools/` — release build scripts
+- `tests/` — test instructions and future automated tests
+- `build/` — generated installable ZIPs
+- `.github/` — validation workflow and contribution templates
 
-- `echo-platform/` — installable WordPress plugin source
-- `docs/` — vision, roadmap, architecture, and release process
-- `tools/` — local build scripts
-- `build/` — generated release ZIPs (ignored by Git except `.gitkeep`)
-- `.github/workflows/` — automated validation and release packaging
+## Current working baseline
 
-## Local build
+The repository began from the confirmed working Echo Platform OS supplier-sync release. Preserve working behavior while the code is gradually reorganized into formal Core OS modules.
 
-### Windows
+## Build a WordPress ZIP
 
-Run:
+Windows:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/build-release.ps1
 ```
 
-### macOS / Linux
-
-Run:
+macOS or Linux:
 
 ```bash
 bash tools/build-release.sh
 ```
 
-The generated WordPress ZIP will appear in `build/`.
-
-## WordPress installation
-
-1. Build or download a release ZIP.
-2. In WordPress, go to **Plugins → Add Plugin → Upload Plugin**.
-3. Upload the release ZIP.
-4. Choose **Replace current with uploaded** when prompted.
-5. Open **Echo Platform → Mission Control**.
+The generated ZIP appears in `build/`.
 
 ## Safety rules
 
-- Never commit API keys, passwords, tokens, private supplier feeds, or customer exports.
-- Never auto-delete products.
-- Preview supplier changes before applying them.
-- Back up WordPress before production upgrades.
+- Never commit credentials, customer exports, private supplier feeds, or WordPress configuration files.
+- Never permanently delete products automatically.
+- Preview risky supplier and catalog changes before applying them.
+- Preserve existing data during upgrades.
+- Test replacement installs on staging before production.
 
-## Branching
-
-- `main` — stable source
-- `feature/<name>` — active development
-- `release/<version>` — release preparation
-- tags such as `v1.2.0` — shipped versions
+See `CONTRIBUTING.md`, `SECURITY.md`, and `docs/operations/RELEASE-CHECKLIST.md` before major changes.

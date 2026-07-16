@@ -1,5 +1,14 @@
 # Changelog
 
+## Repository Foundation — 2026-07-16
+
+- Added contribution, security, and support policies.
+- Added bug, feature, and pull request templates.
+- Added Core OS, event bus, and module architecture references.
+- Added connector, API, database, image, module, roadmap, and release documentation folders.
+- Added a production release checklist.
+- Simplified the repository README around the GitHub source-of-truth workflow.
+
 ## 1.2.0 — Supplier Sync Engine
 
 - Added supplier sync preview engine
