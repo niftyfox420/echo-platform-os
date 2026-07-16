@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.3.0 — Milestone 2 Core OS
+
+- Added compatibility-first OS kernel.
+- Added module contract, registry, dependency ordering, and health reporting.
+- Added central event bus facade, bounded logger, and dependency container.
+- Registered current production services as legacy compatibility modules.
+- Added sandbox and Core OS architecture documentation.
+
 ## Repository Foundation — 2026-07-16
 
 - Added contribution, security, and support policies.

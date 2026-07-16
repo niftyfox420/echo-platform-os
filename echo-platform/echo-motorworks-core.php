@@ -3,7 +3,7 @@
  * Plugin Name: Echo Platform
  * Plugin URI: https://echomotorworks.com/
  * Description: Unified Echo Motorworks catalog, supplier, image, fitment, garage, support, reporting, and settings platform for WooCommerce.
- * Version: 4.2.0
+ * Version: 4.3.0
  * Author: Echo Motorworks
  * Text Domain: echo-motorworks-core
  * Requires at least: 6.5
@@ -29,10 +29,12 @@ add_action( 'before_woocommerce_init', static function (): void {
     }
 } );
 
-define( 'ECHO_MOTORWORKS_CORE_VERSION', '4.2.0' );
+define( 'ECHO_MOTORWORKS_CORE_VERSION', '4.3.0' );
 define( 'ECHO_MOTORWORKS_CORE_FILE', __FILE__ );
 define( 'ECHO_MOTORWORKS_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ECHO_MOTORWORKS_CORE_URL', plugin_dir_url( __FILE__ ) );
+
+require_once ECHO_MOTORWORKS_CORE_DIR . 'core/bootstrap.php';
 
 require_once ECHO_MOTORWORKS_CORE_DIR . 'includes/class-echo-motorworks-db.php';
 require_once ECHO_MOTORWORKS_CORE_DIR . 'includes/class-echo-motorworks-platform.php';
@@ -143,6 +145,8 @@ final class Echo_Motorworks_Core {
         $this->sync_engine = new Echo_Platform_Sync_Engine();
         $this->evilenergy_builder = new Echo_Motorworks_EvilEnergy_Builder();
         $this->pds_builder = new Echo_Motorworks_PDS_Builder();
+
+        Echo_OS_Kernel::instance()->boot();
 
         do_action( 'echo_motorworks_core_loaded', $this );
     }
